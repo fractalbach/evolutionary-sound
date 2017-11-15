@@ -6,7 +6,7 @@
 /*BEGIN*/
 
 
-//   Sound Check Experiment
+//  Sound Check Experiment
 // ==========================================================================
 
 
@@ -15,7 +15,7 @@
 
 
 
-//      Global Constants
+// Global Constants
 // --------------------------------------------------------------------------
 
 
@@ -29,7 +29,7 @@ const LIST_OF_WAVEFORM_TYPES = [
 
 
 
-//      Audio Context
+// Audio Context
 // --------------------------------------------------------------------------
 
 
@@ -46,7 +46,7 @@ var is_sound_on = false;
 
 
 
-//      Button Events - Start and Stop the Sound 
+// Button Events - Start and Stop the Sound 
 // --------------------------------------------------------------------------
 
 // These functions simply start and stop the sound, and are intended to be used by button events on the HTML page.  This is part of the interface, and should always be present in some form, just in case somebody wants to shut off the sound.
