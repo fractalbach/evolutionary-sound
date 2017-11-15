@@ -1,0 +1,92 @@
+/* CSS for Evolutionary Sound Page */
+
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: #E0E5EF;
+}
+
+
+/* Main Title Bar at the top of the page. */
+/* H1 is the text of the main title */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: white;
+  text-shadow: 1px 1px 2px #000;
+  text-align: center;
+  background-color: #A02; 
+}
+h1 {
+  margin: 5px 5%;
+}
+
+
+
+/* The Main area holds the content (which is the info boxes) */
+main {
+  /* max-width: 40em; */
+  margin: auto;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+
+/* Sections are used for the Informational Boxes*/
+/* H2 headers are part of the sections*/
+section {
+  background: #FFF;
+  margin: 2em 2%;
+  padding: 1em;
+  border: solid 1px #AAA;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px 0px #AAA;
+  /* resize: both;
+  overflow: auto; */
+}
+h2 {
+  margin-top: 0;
+  border-bottom: solid 1px #EEE;
+}
+
+
+/* SPAN tags are used for the special text that are changed frequently during usage */
+/* These areas sometiems require special CSS to keep the page looking nice */
+
+span {
+  background: #CEF;
+  padding: 0.2em;
+  border-radius: 0.1em;
+  border: solid 1px #DDD;
+  display: inline-block;
+}
+
+span#sound_status {
+  width: 4em;
+}
+
+span.True {
+  background: #CFC;
+}
+
+/* Animations */
+/* DISABLED
+@keyframes backgroundShift {
+  0%   {background-color:#EEF; }
+  25%  {background-color:#CCF; }
+  50%  {background-color:#CFC; }
+  75%  {background-color:#FCC; }
+  100% {background-color:#EEF; }
+}
+
+body {
+  animation: backgroundShift 40s linear infinite;
+}
+
+*/

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Evolutionary Sound</title>
+<meta name="author" content="Chris Achenbach">
+<meta name="description" content="Create Some Awesome Sounds!">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" type="text/css" href="css/default.css" />
+<script src="js/soundCheck.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Evolutionary Sound</h1>
+    <p>by Chris Achenbach</p>
+</header>
+
+
+<main>
+    <section id="section_info">
+        <h2>Information Box</h2>
+        <p>
+            Generation: 
+            <span id="generation_number">0</span>
+        </p>
+        <p>
+            Current Population: 
+            <span id="population_total">1</span>
+        </p>
+        <p>
+            Currently Listening to:
+            <span id="current_number">1</span>
+        </p>
+    </section>
+
+    <section id="status">
+        <h2>Status</h2>
+        <p>
+            Sound is Playing:
+            <span id="sound_status" class="false">False</span>
+        </p>
+    </section>
+
+    <section id="controls">
+        <h2>Controls</h2>
+        <button id="Button_Start_Sound" onclick="startSound();">
+            Start Sound
+        </button>
+        <button id="Button_End_Sound" onclick="endSound();">
+            End Sound
+        </button>
+    </section>
+
+</main>
+
+
+
+</body>
+</html>
