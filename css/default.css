@@ -25,12 +25,32 @@ h1 {
 }
 
 
+/* Navigation bar looks similar to the header. Bar across top of page.*/
+nav  {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  text-align: center; 
+  background: #222;
+}
+nav a {
+  padding: 2%;
+  text-decoration: none;
+  color: white;
+  border: ridge 1px transparent;
+  background: #222;
+}
+nav a:hover {
+  text-decoration: underline;
+  background: #272;
+  border-color: #FFF;
+}
+
 
 /* The Main area holds the content (which is the info boxes) */
 main {
   /* max-width: 40em; */
   margin: auto;
-  
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
