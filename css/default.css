@@ -14,14 +14,18 @@ body {
 header {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   color: white;
   text-shadow: 1px 1px 2px #000;
   text-align: center;
   background-color: #A02; 
+  padding: 0.5%;
+}
+header p {
+  margin: auto 1%;
 }
 h1 {
-  margin: 5px 5%;
+  margin: auto 1%;
 }
 
 
@@ -50,10 +54,8 @@ nav a:hover {
 /* The Main area holds the content (which is the info boxes) */
 main {
   /* max-width: 40em; */
-  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 
@@ -62,7 +64,7 @@ main {
 /* H2 headers are part of the sections*/
 section {
   background: #FFF;
-  margin: 2em 2%;
+  margin: 1em 1em;
   padding: 1em;
   border: solid 1px #AAA;
   border-radius: 5px;

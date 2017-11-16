@@ -1,6 +1,8 @@
-# Documentation - soundCheck - Evolutionary Sound Project 
+# Documentation - soundCheck 
 
-* [soundCheck](https://github.com/fractalbach/evolutionary-sound/docs/soundCheck.html)
+Documentation Navigation: 
+
+* [soundCheck](https://fractalbach.github.io/evolutionary-sound/docs/soundCheck.html)
 
 
 Sound Check Experiment

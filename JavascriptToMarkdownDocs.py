@@ -3,7 +3,7 @@
 # Javascript to MarkDown
 
 
-BASE_URL = 'https://github.com/fractalbach/evolutionary-sound/docs/'
+BASE_URL = 'https://fractalbach.github.io/evolutionary-sound/docs/'
 
 INPUT_FILE_LIST = [
     'soundCheck'
@@ -18,11 +18,12 @@ INBLOCK = False
 # build the Index File for the documentation.
 
 def makeTitle (title):
-    return '# Documentation - ' + title + ' - Evolutionary Sound Project \n\n'
+    text = '# Documentation - ' + title + ' \n\n'
+    return text
 
 # Table of Contents - 
 
-DOCS_TOC = str()
+DOCS_TOC = 'Documentation Navigation: \n\n'
 
 for name in INPUT_FILE_LIST:
     link = '[' + name + '](' + BASE_URL + name +'.html' + ')'
@@ -38,7 +39,7 @@ def buildIndexDocument (toWrite) :
 
 # Combine the Main Title with the TOC for the index page
 
-buildIndexDocument(makeTitle('Overview') + DOCS_TOC)
+buildIndexDocument(makeTitle('Navigate') + DOCS_TOC)
 
 
 # Builds one of the documentation files, one for each js file.
