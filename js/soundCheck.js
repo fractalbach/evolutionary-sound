@@ -33,7 +33,7 @@ const LIST_OF_WAVEFORM_TYPES = [
 // During the creation of random sounds, randomly generating numbers is a common occurence.  This function generates a random integer between two integers.
 
 
-// More precisely, let $f(m,M)$ be a function $f:(\mathrm{Z}, \mathrm{Z}) \to \mathrm{Z})$ such that $f(m,M) = x$ and $m \leq x \leq M$
+// More precisely, let $f(m,M)$ be a function $f:(\mathbb{Z}, \mathbb{Z}) \to \mathbb{Z}$ such that $f(m,M) = x$ and $m \leq x \leq M$
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -68,15 +68,30 @@ var audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 var buildRandomOscillator = function () {
     var osc;
-    var waveformType = getRandomValueFromArray(LIST_OF_WAVEFORM_TYPES);
     osc = audioContext.createOscillator();
-    osc.type = waveformType;
+    RandomizeOscillator(osc);
+    osc.start(audioContext.currentTime);
+    console.log('New Oscillator Created!\n', osc);
     return osc;
 };  
 
 
+// RandomizeOscillator will take an existing oscillator and give it random values for the type and frequency.
 
-// Button Events - Start and Stop the Sound 
+var RandomizeOscillator = function (osc) {
+    osc.type = getRandomValueFromArray(LIST_OF_WAVEFORM_TYPES);
+    osc.frequency.value = getRandomInt(400,100);
+    return osc;
+};
+
+
+
+// Button Events 
+// ==========================================================================
+
+
+
+// Start and Stop the Sound 
 // --------------------------------------------------------------------------
 
 // For now, we want an oscillator to be defined globally, so that we can turn it on or off.  Before any buttons are pressed, there is no sound.  We just have an empty variable where the oscillator will go when it is turned on.
@@ -85,42 +100,75 @@ var osc;
 var is_sound_on = false;
 
 
-// These functions simply start and stop the sound, and are intended to be used by button events on the HTML page.  This is part of the interface, and should always be present in some form, just in case somebody wants to shut off the sound.
+osc = buildRandomOscillator();
+
+
+// Starting the sound will *Connect* the oscillator to the speakers, effectively turning it on for the listener.
 
 var startSound = function() {
-    if (is_sound_on) {return;}
-    osc = buildRandomOscillator();
     osc.connect(audioContext.destination);
-    osc.start(audioContext.currentTime);
     is_sound_on = true;
-    changeSoundStatus('True');
-    changeTextWaveform('Highlight', osc.type);
 };
+
+// Ending the sound will *Disconnect* the oscillator from the speakers, which will effectively turn the sound off.
 
 var endSound = function() {
-    if (osc == undefined) {return;}
-    osc.stop(audioContext.currentTime);
+    osc.disconnect(audioContext.destination);
     is_sound_on = false;
-    changeSoundStatus('False');
-    changeTextWaveform('NoHighlight', 'None');
 };
 
 
-// If we are using this script with the HTML webpage (which we are), then starting or stopping the sound can change the text in the interface.  If, for some reason, we aren't in the webpage, then that function simply won't return anything.
+// Toggle sound simply decides if the audio should be turned on or off based on its current status. 
 
+var toggleSound = function () {
+    if  (!is_sound_on)   {return startSound();}
+    if  (is_sound_on)    {return endSound();}
+};
+
+
+// Changing the Interface
+// --------------------------------------------------------------------------
+
+
+
+//  **updateInterface()** will call of the text-altering functions that affect what is displayed on the screen.  Globalized variables are converted into strings, and then into HTML.
+
+
+// **Note:** Functions outside of the interface call upon this one.  It connects the actual sound events to the interface.  Everything else, and how the interface works, is defined further in this section.
+
+var updateInterface = function () {
+    changeSoundStatus(is_sound_on);
+    changeTextWaveform(is_sound_on, osc.type);
+    changeTextFrequency(is_sound_on, osc.frequency.value);
+};
+
+
+// Map TRUE and FALSE boolean values into strings
+
+var boolHighL = function (status) {
+    if (status) {return 'Highlight';} 
+    else        {return 'NoHighlight';}
+};
+
+// These functions interact with the interface (which is the browser).  
 
 var changeSoundStatus = function (status) {
     var span = document.getElementById('sound_status');
-    span.innerHTML = status;
-    span.className = status;
+    span.innerHTML = status.toString();
+    span.className = status.toString();
 };
 
 
 var changeTextWaveform = function (status, waveform) {
     document.getElementById('waveform_type').innerHTML = waveform;
-    document.getElementById('waveform_type').className = status;
+    document.getElementById('waveform_type').className = boolHighL(status);
 };
 
+
+var changeTextFrequency = function (status, frequency) {
+    document.getElementById('span_frequency').innerHTML = frequency.toString();
+    document.getElementById('span_frequency').className = boolHighL(status); 
+};
 
 /* Various Functions for doing Checks */
 /* These Assign variables a new value if they fail the check */

@@ -48,20 +48,19 @@
     </section>
 
     <section id="controls">
-        <h2>Basic Controls</h2>
-        <p> 
-            Sound is Playing:
-            <span id="sound_status" class="false">False</span>
-        </p>
-        <p>
-            Waveform:
-            <span id="waveform_type" class="NoHighlight">None</span>
-        </p>
-        <button id="Button_Start_Sound" onclick="startSound();">
-            Start Sound
+        <h2>Oscillator Controls</h2>
+        <p> Sound is Playing:
+            <span id="sound_status" class="false">False</span></p>
+        <p> Waveform:
+            <span id="waveform_type" class="NoHighlight">None</span></p>
+        <p> Frequency (Hz):
+            <span id="span_frequency" class="NoHighlight">None</span></p>
+        <button id ="on_off_switch" onclick="toggleSound();updateInterface();">
+            On/Off Switch
         </button>
-        <button id="Button_End_Sound" onclick="endSound();">
-            End Sound
+        <button id="button_randomize_oscillator" 
+            onclick="RandomizeOscillator(osc);updateInterface();">
+            Randomize
         </button>
     </section>
 

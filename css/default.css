@@ -99,6 +99,7 @@ span {
   border-radius: 0.1em;
   border: solid 1px #DDD;
   display: inline-block;
+  font-variant:  all-small-caps;
 }
 
 span#sound_status {
@@ -112,12 +113,12 @@ span.Highlight {
   background: #CEF;
 }
 span.NoHighlight {
-  background: #F0F8FF;
+  background: #F8FCFF;
 }
-span.True {
+span.true {
   background: #CFC;
 }
-span.False {
+span.false {
   background: #FCC;
 }
 
