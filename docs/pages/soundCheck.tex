@@ -1,0 +1,192 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+\usepackage{fullpage}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\date{}
+
+\begin{document}
+
+
+\section{Sound Check Experiment}\label{sound-check-experiment}
+
+This is a preliminary test for making sound with javascript. Right now,
+the code will be tangled together in an attempt to understand how
+everything works. The actual program will have much more separation of
+parts.
+
+\subsection{Global Constants}\label{global-constants}
+
+The Lists will be constant throughout the whole program. The program
+will randomly select an item from one of these lists depending on the
+situation, and use that value to affect the sound in some way.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{const}\NormalTok{ LIST_OF_WAVEFORM_TYPES }\OperatorTok{=}\NormalTok{ [}
+    \StringTok{'sine'}\OperatorTok{,} \StringTok{'square'}\OperatorTok{,} \StringTok{'sawtooth'}\OperatorTok{,} \StringTok{'triangle'}
+\NormalTok{]}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Audio Context}\label{audio-context}
+
+Quote from
+\href{https://developer.mozilla.org/en-US/docs/Web/API/AudioContext}{Mozilla
+Developer - Audio Context}
+
+\begin{quote}
+The AudioContext interface represents an audio-processing graph built
+from audio modules linked together, each represented by an AudioNode. An
+audio context controls both the creation of the nodes it contains and
+the execution of the audio processing, or decoding. You need to create
+an AudioContext before you do anything else, as everything happens
+inside a context.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ audioContext }\OperatorTok{=} \KeywordTok{new} \AttributeTok{AudioContext}\NormalTok{()}\OperatorTok{;}
+\KeywordTok{var}\NormalTok{ osc}\OperatorTok{;}
+\KeywordTok{var}\NormalTok{ waveformType }\OperatorTok{=} \StringTok{"square"}\OperatorTok{;}
+\KeywordTok{var}\NormalTok{ is_sound_on }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Button Events - Start and Stop the
+Sound}\label{button-events---start-and-stop-the-sound}
+
+These functions simply start and stop the sound, and are intended to be
+used by button events on the HTML page. This is part of the interface,
+and should always be present in some form, just in case somebody wants
+to shut off the sound.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ startSound }\OperatorTok{=} \KeywordTok{function}\NormalTok{() }\OperatorTok{\{}
+    \ControlFlowTok{if}\NormalTok{ (is_sound_on) }\OperatorTok{\{}\ControlFlowTok{return}\OperatorTok{;\}}
+\NormalTok{    osc }\OperatorTok{=} \VariableTok{audioContext}\NormalTok{.}\AttributeTok{createOscillator}\NormalTok{()}\OperatorTok{;}
+    \VariableTok{osc}\NormalTok{.}\AttributeTok{type} \OperatorTok{=}\NormalTok{ waveformType}\OperatorTok{;}
+    \VariableTok{osc}\NormalTok{.}\AttributeTok{connect}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{destination}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{osc}\NormalTok{.}\AttributeTok{start}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{currentTime}\NormalTok{)}\OperatorTok{;}
+\NormalTok{    is_sound_on }\OperatorTok{=} \KeywordTok{true}\OperatorTok{;}
+    \AttributeTok{changeSoundStatus}\NormalTok{(}\StringTok{'True'}\NormalTok{)}\OperatorTok{;}
+\OperatorTok{\};}
+\KeywordTok{var}\NormalTok{ endSound }\OperatorTok{=} \KeywordTok{function}\NormalTok{() }\OperatorTok{\{}
+    \ControlFlowTok{if}\NormalTok{ (osc }\OperatorTok{==} \KeywordTok{undefined}\NormalTok{) }\OperatorTok{\{}\ControlFlowTok{return}\OperatorTok{;\}}
+    \VariableTok{osc}\NormalTok{.}\AttributeTok{stop}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{currentTime}\NormalTok{)}\OperatorTok{;}
+\NormalTok{    is_sound_on }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
+    \AttributeTok{changeSoundStatus}\NormalTok{(}\StringTok{'False'}\NormalTok{)}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+If we are using this script with the HTML webpage (which we are), then
+starting or stopping the sound can change the text in the interface. If,
+for some reason, we aren't in the webpage, then that function simply
+won't return anything.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ changeSoundStatus }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status) }\OperatorTok{\{}
+    \KeywordTok{var}\NormalTok{ span }\OperatorTok{=} \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'sound_status'}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{span}\NormalTok{.}\AttributeTok{innerHTML} \OperatorTok{=}\NormalTok{ status}\OperatorTok{;}
+    \VariableTok{span}\NormalTok{.}\AttributeTok{className} \OperatorTok{=}\NormalTok{ status}\OperatorTok{;}
+\OperatorTok{\};}
+\KeywordTok{var}\NormalTok{ humanHearingCheck }\OperatorTok{=} \KeywordTok{function}\NormalTok{(frequency) }\OperatorTok{\{}
+    \ControlFlowTok{return}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\end{document}

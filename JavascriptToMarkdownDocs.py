@@ -6,7 +6,8 @@
 BASE_URL = 'https://fractalbach.github.io/evolutionary-sound/docs/'
 
 INPUT_FILE_LIST = [
-    'soundCheck'
+    'soundCheck',
+    'GraphRepresentEquation'
 ]
 
 
@@ -19,19 +20,23 @@ INBLOCK = False
 
 def makeTitle (title):
     text = '# Documentation - ' + title + ' \n\n'
+    text += 'Welcome to the Documentation of the *Evolutionary Sound* project!  Each javascript file was converted into a markdown file in the github repository.  For each of those, there is a separate HTML page and PDF, which can be found here.\n\n'
     return text
 
-# Table of Contents - 
+# Table of Contents
+DOCS_TOC = '## Documentation Navigation: \n\nDocumentation HTML Page | PDF \n-|- \n'
 
-DOCS_TOC = 'Documentation Navigation: \n\n'
-
+# Adds Links to the Table of Contents
 for name in INPUT_FILE_LIST:
     link = '[' + name + '](' + BASE_URL + name +'.html' + ')'
-    DOCS_TOC += '* ' + link + '\n'
+    link += ' |  [PDF](' + BASE_URL + 'pdf/' + name + '.pdf' + ')'
+    DOCS_TOC += link + '\n'
+    
+
+
 
 
 # Creation of the Index Document
-
 def buildIndexDocument (toWrite) :
     with open( 'docs/index.md', 'w') as newFile:
         newFile.write(toWrite)
@@ -48,14 +53,10 @@ def buildDocument(inputFile_name):
 
     newFile_string = str()
 
-    newFile_string += makeTitle(inputFile_name) + DOCS_TOC
-
-
+    # newFile_string += makeTitle(inputFile_name) + DOCS_TOC
 
     with open('js/' + inputFile_name + '.js') as inputFile:
         inputFile_data = list(inputFile)
-
-
 
     for line in inputFile_data:
         newFile_string += switchSequence(line)
@@ -99,6 +100,33 @@ def switchSequence(line):
 
 
 
+# Calls Functions to Build Individual Documents.
 
 for inputFile_name in INPUT_FILE_LIST:
     buildDocument(inputFile_name)
+
+
+
+# Building PDF Documents from the pages using pandoc and pdflatex
+
+# Create .TEX file using pandoc
+from subprocess import call
+
+for name in INPUT_FILE_LIST:
+    call([
+        "pandoc", 
+        "docs/" + name + ".md",
+        "-s", 
+        "-S", 
+        "-o", 
+        "docs/pages/" + name + ".tex", 
+        "--template=docs/templateDraft.tex"
+    ])
+    # Create .pdf file using pdflatex
+    call([
+        "pdflatex", 
+        "docs/pages/" + name + ".tex", 
+        "-output-directory=docs/pdf", 
+        "-aux-directory=docs/temp"
+    ])
+ 

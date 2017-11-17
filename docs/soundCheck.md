@@ -1,8 +1,3 @@
-# Documentation - soundCheck 
-
-Documentation Navigation: 
-
-* [soundCheck](https://fractalbach.github.io/evolutionary-sound/docs/soundCheck.html)
 
 
 Sound Check Experiment
@@ -31,7 +26,7 @@ Audio Context
 --------------------------------------------------------------------------
 
 
-https://developer.mozilla.org/en-US/docs/Web/API/AudioContext
+Quote from [Mozilla Developer - Audio Context](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext)
 
 > The AudioContext interface represents an audio-processing graph built from audio modules linked together, each represented by an AudioNode. An audio context controls both the creation of the nodes it contains and the execution of the audio processing, or decoding. You need to create an AudioContext before you do anything else, as everything happens inside a context.
 
