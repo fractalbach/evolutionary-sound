@@ -126,7 +126,7 @@ common occurence. This function generates a random integer between two
 integers.
 
 More precisely, let \(f(m,M)\) be a function
-\(f:(\mathrm{Z}, \mathrm{Z}) \to \mathrm{Z})\) such that \(f(m,M) = x\)
+\(f:(\mathbb{Z}, \mathbb{Z}) \to \mathbb{Z}\) such that \(f(m,M) = x\)
 and \(m \leq x \leq M\)
 
 \begin{Shaded}
@@ -184,16 +184,31 @@ of the oscillator.
 \begin{Highlighting}[]
 \KeywordTok{var}\NormalTok{ buildRandomOscillator }\OperatorTok{=} \KeywordTok{function}\NormalTok{ () }\OperatorTok{\{}
     \KeywordTok{var}\NormalTok{ osc}\OperatorTok{;}
-    \KeywordTok{var}\NormalTok{ waveformType }\OperatorTok{=} \AttributeTok{getRandomValueFromArray}\NormalTok{(LIST_OF_WAVEFORM_TYPES)}\OperatorTok{;}
 \NormalTok{    osc }\OperatorTok{=} \VariableTok{audioContext}\NormalTok{.}\AttributeTok{createOscillator}\NormalTok{()}\OperatorTok{;}
-    \VariableTok{osc}\NormalTok{.}\AttributeTok{type} \OperatorTok{=}\NormalTok{ waveformType}\OperatorTok{;}
+    \AttributeTok{RandomizeOscillator}\NormalTok{(osc)}\OperatorTok{;}
+    \VariableTok{osc}\NormalTok{.}\AttributeTok{start}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{currentTime}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{console}\NormalTok{.}\AttributeTok{log}\NormalTok{(}\StringTok{'New Oscillator Created!}\SpecialCharTok{\textbackslash{}n}\StringTok{'}\OperatorTok{,}\NormalTok{ osc)}\OperatorTok{;}
     \ControlFlowTok{return}\NormalTok{ osc}\OperatorTok{;}
 \OperatorTok{\};}  
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Button Events - Start and Stop the
-Sound}\label{button-events---start-and-stop-the-sound}
+RandomizeOscillator will take an existing oscillator and give it random
+values for the type and frequency.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ RandomizeOscillator }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (osc) }\OperatorTok{\{}
+    \VariableTok{osc}\NormalTok{.}\AttributeTok{type} \OperatorTok{=} \AttributeTok{getRandomValueFromArray}\NormalTok{(LIST_OF_WAVEFORM_TYPES)}\OperatorTok{;}
+    \VariableTok{osc}\NormalTok{.}\VariableTok{frequency}\NormalTok{.}\AttributeTok{value} \OperatorTok{=} \AttributeTok{getRandomInt}\NormalTok{(}\DecValTok{400}\OperatorTok{,}\DecValTok{100}\NormalTok{)}\OperatorTok{;}
+    \ControlFlowTok{return}\NormalTok{ osc}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Button Events}\label{button-events}
+
+\subsection{Start and Stop the Sound}\label{start-and-stop-the-sound}
 
 For now, we want an oscillator to be defined globally, so that we can
 turn it on or off. Before any buttons are pressed, there is no sound. We
@@ -204,50 +219,93 @@ turned on.
 \begin{Highlighting}[]
 \KeywordTok{var}\NormalTok{ osc}\OperatorTok{;}
 \KeywordTok{var}\NormalTok{ is_sound_on }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
+\NormalTok{osc }\OperatorTok{=} \AttributeTok{buildRandomOscillator}\NormalTok{()}\OperatorTok{;}
 \end{Highlighting}
 \end{Shaded}
 
-These functions simply start and stop the sound, and are intended to be
-used by button events on the HTML page. This is part of the interface,
-and should always be present in some form, just in case somebody wants
-to shut off the sound.
+Starting the sound will \emph{Connect} the oscillator to the speakers,
+effectively turning it on for the listener.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{var}\NormalTok{ startSound }\OperatorTok{=} \KeywordTok{function}\NormalTok{() }\OperatorTok{\{}
-    \ControlFlowTok{if}\NormalTok{ (is_sound_on) }\OperatorTok{\{}\ControlFlowTok{return}\OperatorTok{;\}}
-\NormalTok{    osc }\OperatorTok{=} \AttributeTok{buildRandomOscillator}\NormalTok{()}\OperatorTok{;}
     \VariableTok{osc}\NormalTok{.}\AttributeTok{connect}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{destination}\NormalTok{)}\OperatorTok{;}
-    \VariableTok{osc}\NormalTok{.}\AttributeTok{start}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{currentTime}\NormalTok{)}\OperatorTok{;}
 \NormalTok{    is_sound_on }\OperatorTok{=} \KeywordTok{true}\OperatorTok{;}
-    \AttributeTok{changeSoundStatus}\NormalTok{(}\StringTok{'True'}\NormalTok{)}\OperatorTok{;}
-    \AttributeTok{changeTextWaveform}\NormalTok{(}\StringTok{'Highlight'}\OperatorTok{,} \VariableTok{osc}\NormalTok{.}\AttributeTok{type}\NormalTok{)}\OperatorTok{;}
-\OperatorTok{\};}
-\KeywordTok{var}\NormalTok{ endSound }\OperatorTok{=} \KeywordTok{function}\NormalTok{() }\OperatorTok{\{}
-    \ControlFlowTok{if}\NormalTok{ (osc }\OperatorTok{==} \KeywordTok{undefined}\NormalTok{) }\OperatorTok{\{}\ControlFlowTok{return}\OperatorTok{;\}}
-    \VariableTok{osc}\NormalTok{.}\AttributeTok{stop}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{currentTime}\NormalTok{)}\OperatorTok{;}
-\NormalTok{    is_sound_on }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
-    \AttributeTok{changeSoundStatus}\NormalTok{(}\StringTok{'False'}\NormalTok{)}\OperatorTok{;}
-    \AttributeTok{changeTextWaveform}\NormalTok{(}\StringTok{'NoHighlight'}\OperatorTok{,} \StringTok{'None'}\NormalTok{)}\OperatorTok{;}
 \OperatorTok{\};}
 \end{Highlighting}
 \end{Shaded}
 
-If we are using this script with the HTML webpage (which we are), then
-starting or stopping the sound can change the text in the interface. If,
-for some reason, we aren't in the webpage, then that function simply
-won't return anything.
+Ending the sound will \emph{Disconnect} the oscillator from the
+speakers, which will effectively turn the sound off.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ endSound }\OperatorTok{=} \KeywordTok{function}\NormalTok{() }\OperatorTok{\{}
+    \VariableTok{osc}\NormalTok{.}\AttributeTok{disconnect}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{destination}\NormalTok{)}\OperatorTok{;}
+\NormalTok{    is_sound_on }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+Toggle sound simply decides if the audio should be turned on or off
+based on its current status.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ toggleSound }\OperatorTok{=} \KeywordTok{function}\NormalTok{ () }\OperatorTok{\{}
+    \ControlFlowTok{if}\NormalTok{  (}\OperatorTok{!}\NormalTok{is_sound_on)   }\OperatorTok{\{}\ControlFlowTok{return} \AttributeTok{startSound}\NormalTok{()}\OperatorTok{;\}}
+    \ControlFlowTok{if}\NormalTok{  (is_sound_on)    }\OperatorTok{\{}\ControlFlowTok{return} \AttributeTok{endSound}\NormalTok{()}\OperatorTok{;\}}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Changing the Interface}\label{changing-the-interface}
+
+\textbf{updateInterface()} will call of the text-altering functions that
+affect what is displayed on the screen. Globalized variables are
+converted into strings, and then into HTML.
+
+\textbf{Note:} Functions outside of the interface call upon this one. It
+connects the actual sound events to the interface. Everything else, and
+how the interface works, is defined further in this section.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ updateInterface }\OperatorTok{=} \KeywordTok{function}\NormalTok{ () }\OperatorTok{\{}
+    \AttributeTok{changeSoundStatus}\NormalTok{(is_sound_on)}\OperatorTok{;}
+    \AttributeTok{changeTextWaveform}\NormalTok{(is_sound_on}\OperatorTok{,} \VariableTok{osc}\NormalTok{.}\AttributeTok{type}\NormalTok{)}\OperatorTok{;}
+    \AttributeTok{changeTextFrequency}\NormalTok{(is_sound_on}\OperatorTok{,} \VariableTok{osc}\NormalTok{.}\VariableTok{frequency}\NormalTok{.}\AttributeTok{value}\NormalTok{)}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+Map TRUE and FALSE boolean values into strings
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ boolHighL }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status) }\OperatorTok{\{}
+    \ControlFlowTok{if}\NormalTok{ (status) }\OperatorTok{\{}\ControlFlowTok{return} \StringTok{'Highlight'}\OperatorTok{;\}} 
+    \ControlFlowTok{else}        \OperatorTok{\{}\ControlFlowTok{return} \StringTok{'NoHighlight'}\OperatorTok{;\}}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+These functions interact with the interface (which is the browser).
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{var}\NormalTok{ changeSoundStatus }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status) }\OperatorTok{\{}
     \KeywordTok{var}\NormalTok{ span }\OperatorTok{=} \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'sound_status'}\NormalTok{)}\OperatorTok{;}
-    \VariableTok{span}\NormalTok{.}\AttributeTok{innerHTML} \OperatorTok{=}\NormalTok{ status}\OperatorTok{;}
-    \VariableTok{span}\NormalTok{.}\AttributeTok{className} \OperatorTok{=}\NormalTok{ status}\OperatorTok{;}
+    \VariableTok{span}\NormalTok{.}\AttributeTok{innerHTML} \OperatorTok{=} \VariableTok{status}\NormalTok{.}\AttributeTok{toString}\NormalTok{()}\OperatorTok{;}
+    \VariableTok{span}\NormalTok{.}\AttributeTok{className} \OperatorTok{=} \VariableTok{status}\NormalTok{.}\AttributeTok{toString}\NormalTok{()}\OperatorTok{;}
 \OperatorTok{\};}
 \KeywordTok{var}\NormalTok{ changeTextWaveform }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status}\OperatorTok{,}\NormalTok{ waveform) }\OperatorTok{\{}
     \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'waveform_type'}\NormalTok{).}\AttributeTok{innerHTML} \OperatorTok{=}\NormalTok{ waveform}\OperatorTok{;}
-    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'waveform_type'}\NormalTok{).}\AttributeTok{className} \OperatorTok{=}\NormalTok{ status}\OperatorTok{;}
+    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'waveform_type'}\NormalTok{).}\AttributeTok{className} \OperatorTok{=} \AttributeTok{boolHighL}\NormalTok{(status)}\OperatorTok{;}
+\OperatorTok{\};}
+\KeywordTok{var}\NormalTok{ changeTextFrequency }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status}\OperatorTok{,}\NormalTok{ frequency) }\OperatorTok{\{}
+    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'span_frequency'}\NormalTok{).}\AttributeTok{innerHTML} \OperatorTok{=} \VariableTok{frequency}\NormalTok{.}\AttributeTok{toString}\NormalTok{()}\OperatorTok{;}
+    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'span_frequency'}\NormalTok{).}\AttributeTok{className} \OperatorTok{=} \AttributeTok{boolHighL}\NormalTok{(status)}\OperatorTok{;} 
 \OperatorTok{\};}
 \KeywordTok{var}\NormalTok{ humanHearingCheck }\OperatorTok{=} \KeywordTok{function}\NormalTok{(frequency) }\OperatorTok{\{}
     \ControlFlowTok{return}\OperatorTok{;}
