@@ -119,6 +119,40 @@ situation, and use that value to affect the sound in some way.
 \end{Highlighting}
 \end{Shaded}
 
+\subsection{Global Functions}\label{global-functions}
+
+During the creation of random sounds, randomly generating numbers is a
+common occurence. This function generates a random integer between two
+integers.
+
+More precisely, let \(f(m,M)\) be a function
+\(f:(\mathrm{Z}, \mathrm{Z}) \to \mathrm{Z})\) such that \(f(m,M) = x\)
+and \(m \leq x \leq M\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{function} \AttributeTok{getRandomInt}\NormalTok{(min}\OperatorTok{,}\NormalTok{ max) }\OperatorTok{\{}
+\NormalTok{    min }\OperatorTok{=} \VariableTok{Math}\NormalTok{.}\AttributeTok{ceil}\NormalTok{(min)}\OperatorTok{;}
+\NormalTok{    max }\OperatorTok{=} \VariableTok{Math}\NormalTok{.}\AttributeTok{floor}\NormalTok{(max) }\OperatorTok{+} \DecValTok{1}\OperatorTok{;}
+    \ControlFlowTok{return} \VariableTok{Math}\NormalTok{.}\AttributeTok{floor}\NormalTok{(}\VariableTok{Math}\NormalTok{.}\AttributeTok{random}\NormalTok{() }\OperatorTok{*}\NormalTok{ (max }\OperatorTok{-}\NormalTok{ min)) }\OperatorTok{+}\NormalTok{ min}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Since the most common target is a random value from one of the global
+Constant Arrays, a useful function will return one of those randomly
+selected values. This can be achieved by picking a random KEY in the
+array, with the minimum being 0, and the maximum being the length of the
+array.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{function} \AttributeTok{getRandomValueFromArray}\NormalTok{(name) }\OperatorTok{\{}
+    \ControlFlowTok{return}\NormalTok{ name[ }\AttributeTok{getRandomInt}\NormalTok{(}\DecValTok{0}\OperatorTok{,} \VariableTok{name}\NormalTok{.}\AttributeTok{length} \OperatorTok{-} \DecValTok{1}\NormalTok{) ]}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
 \subsection{Audio Context}\label{audio-context}
 
 Quote from
@@ -136,15 +170,42 @@ inside a context.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{var}\NormalTok{ audioContext }\OperatorTok{=} \KeywordTok{new} \AttributeTok{AudioContext}\NormalTok{()}\OperatorTok{;}
-\KeywordTok{var}\NormalTok{ osc}\OperatorTok{;}
-\KeywordTok{var}\NormalTok{ waveformType }\OperatorTok{=} \StringTok{"square"}\OperatorTok{;}
-\KeywordTok{var}\NormalTok{ is_sound_on }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
+\KeywordTok{var}\NormalTok{ audioContext }\OperatorTok{=} \KeywordTok{new}\NormalTok{ (}\VariableTok{window}\NormalTok{.}\AttributeTok{AudioContext} \OperatorTok{||} \VariableTok{window}\NormalTok{.}\AttributeTok{webkitAudioContext}\NormalTok{)()}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Simple Oscillator}\label{simple-oscillator}
+
+For this example, an oscillator node will be created. Given that we have
+a list of waveforms, we will choose one of them at random upon creation
+of the oscillator.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ buildRandomOscillator }\OperatorTok{=} \KeywordTok{function}\NormalTok{ () }\OperatorTok{\{}
+    \KeywordTok{var}\NormalTok{ osc}\OperatorTok{;}
+    \KeywordTok{var}\NormalTok{ waveformType }\OperatorTok{=} \AttributeTok{getRandomValueFromArray}\NormalTok{(LIST_OF_WAVEFORM_TYPES)}\OperatorTok{;}
+\NormalTok{    osc }\OperatorTok{=} \VariableTok{audioContext}\NormalTok{.}\AttributeTok{createOscillator}\NormalTok{()}\OperatorTok{;}
+    \VariableTok{osc}\NormalTok{.}\AttributeTok{type} \OperatorTok{=}\NormalTok{ waveformType}\OperatorTok{;}
+    \ControlFlowTok{return}\NormalTok{ osc}\OperatorTok{;}
+\OperatorTok{\};}  
 \end{Highlighting}
 \end{Shaded}
 
 \subsection{Button Events - Start and Stop the
 Sound}\label{button-events---start-and-stop-the-sound}
+
+For now, we want an oscillator to be defined globally, so that we can
+turn it on or off. Before any buttons are pressed, there is no sound. We
+just have an empty variable where the oscillator will go when it is
+turned on.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ osc}\OperatorTok{;}
+\KeywordTok{var}\NormalTok{ is_sound_on }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
 
 These functions simply start and stop the sound, and are intended to be
 used by button events on the HTML page. This is part of the interface,
@@ -155,18 +216,19 @@ to shut off the sound.
 \begin{Highlighting}[]
 \KeywordTok{var}\NormalTok{ startSound }\OperatorTok{=} \KeywordTok{function}\NormalTok{() }\OperatorTok{\{}
     \ControlFlowTok{if}\NormalTok{ (is_sound_on) }\OperatorTok{\{}\ControlFlowTok{return}\OperatorTok{;\}}
-\NormalTok{    osc }\OperatorTok{=} \VariableTok{audioContext}\NormalTok{.}\AttributeTok{createOscillator}\NormalTok{()}\OperatorTok{;}
-    \VariableTok{osc}\NormalTok{.}\AttributeTok{type} \OperatorTok{=}\NormalTok{ waveformType}\OperatorTok{;}
+\NormalTok{    osc }\OperatorTok{=} \AttributeTok{buildRandomOscillator}\NormalTok{()}\OperatorTok{;}
     \VariableTok{osc}\NormalTok{.}\AttributeTok{connect}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{destination}\NormalTok{)}\OperatorTok{;}
     \VariableTok{osc}\NormalTok{.}\AttributeTok{start}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{currentTime}\NormalTok{)}\OperatorTok{;}
 \NormalTok{    is_sound_on }\OperatorTok{=} \KeywordTok{true}\OperatorTok{;}
     \AttributeTok{changeSoundStatus}\NormalTok{(}\StringTok{'True'}\NormalTok{)}\OperatorTok{;}
+    \AttributeTok{changeTextWaveform}\NormalTok{(}\StringTok{'Highlight'}\OperatorTok{,} \VariableTok{osc}\NormalTok{.}\AttributeTok{type}\NormalTok{)}\OperatorTok{;}
 \OperatorTok{\};}
 \KeywordTok{var}\NormalTok{ endSound }\OperatorTok{=} \KeywordTok{function}\NormalTok{() }\OperatorTok{\{}
     \ControlFlowTok{if}\NormalTok{ (osc }\OperatorTok{==} \KeywordTok{undefined}\NormalTok{) }\OperatorTok{\{}\ControlFlowTok{return}\OperatorTok{;\}}
     \VariableTok{osc}\NormalTok{.}\AttributeTok{stop}\NormalTok{(}\VariableTok{audioContext}\NormalTok{.}\AttributeTok{currentTime}\NormalTok{)}\OperatorTok{;}
 \NormalTok{    is_sound_on }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
     \AttributeTok{changeSoundStatus}\NormalTok{(}\StringTok{'False'}\NormalTok{)}\OperatorTok{;}
+    \AttributeTok{changeTextWaveform}\NormalTok{(}\StringTok{'NoHighlight'}\OperatorTok{,} \StringTok{'None'}\NormalTok{)}\OperatorTok{;}
 \OperatorTok{\};}
 \end{Highlighting}
 \end{Shaded}
@@ -182,6 +244,10 @@ won't return anything.
     \KeywordTok{var}\NormalTok{ span }\OperatorTok{=} \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'sound_status'}\NormalTok{)}\OperatorTok{;}
     \VariableTok{span}\NormalTok{.}\AttributeTok{innerHTML} \OperatorTok{=}\NormalTok{ status}\OperatorTok{;}
     \VariableTok{span}\NormalTok{.}\AttributeTok{className} \OperatorTok{=}\NormalTok{ status}\OperatorTok{;}
+\OperatorTok{\};}
+\KeywordTok{var}\NormalTok{ changeTextWaveform }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status}\OperatorTok{,}\NormalTok{ waveform) }\OperatorTok{\{}
+    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'waveform_type'}\NormalTok{).}\AttributeTok{innerHTML} \OperatorTok{=}\NormalTok{ waveform}\OperatorTok{;}
+    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'waveform_type'}\NormalTok{).}\AttributeTok{className} \OperatorTok{=}\NormalTok{ status}\OperatorTok{;}
 \OperatorTok{\};}
 \KeywordTok{var}\NormalTok{ humanHearingCheck }\OperatorTok{=} \KeywordTok{function}\NormalTok{(frequency) }\OperatorTok{\{}
     \ControlFlowTok{return}\OperatorTok{;}

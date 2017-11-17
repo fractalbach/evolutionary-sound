@@ -25,8 +25,13 @@
 </nav>
 
 
+
+
 <main>
-    <section id="section_info">
+
+
+
+    <section id="section_info" style="display:none;">
         <h2>Information Box</h2>
         <p>
             Generation: 
@@ -42,16 +47,16 @@
         </p>
     </section>
 
-    <section id="status">
-        <h2>Status</h2>
-        <p>
+    <section id="controls">
+        <h2>Basic Controls</h2>
+        <p> 
             Sound is Playing:
             <span id="sound_status" class="false">False</span>
         </p>
-    </section>
-
-    <section id="controls">
-        <h2>Controls</h2>
+        <p>
+            Waveform:
+            <span id="waveform_type" class="NoHighlight">None</span>
+        </p>
         <button id="Button_Start_Sound" onclick="startSound();">
             Start Sound
         </button>
@@ -60,9 +65,25 @@
         </button>
     </section>
 
+    <section>
+        <h2>Visualizer</h2>
+        <canvas id="visualizer"></canvas>
+
+    </section>
+
 </main>
 
 
+<article id="dev_news_box" style="display: none;">
+    <h2>Development Status</h2>
+    <h3>Currently,</h3>
+    <p>this program just generates an oscillator with a random waveform.</p>
+    <h3>Next,</h3>
+    <ul>
+        <li>There will be even more random waveforms beyond the basic defaults</li>
+        <li>Randomly generated effects</li>
+    </ul>
+</article>
 
 </body>
 </html>
