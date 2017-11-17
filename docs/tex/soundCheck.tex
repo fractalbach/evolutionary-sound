@@ -36,36 +36,36 @@
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
 % Add ',fontsize=\small' for more characters per line
 \newenvironment{Shaded}{}{}
-\newcommand{\KeywordTok}[1]{\textbf{#1}}
-\newcommand{\DataTypeTok}[1]{\underline{#1}}
-\newcommand{\DecValTok}[1]{#1}
-\newcommand{\BaseNTok}[1]{#1}
-\newcommand{\FloatTok}[1]{#1}
-\newcommand{\ConstantTok}[1]{#1}
-\newcommand{\CharTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{#1}
-\newcommand{\StringTok}[1]{#1}
-\newcommand{\VerbatimStringTok}[1]{#1}
-\newcommand{\SpecialStringTok}[1]{#1}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
 \newcommand{\ImportTok}[1]{#1}
-\newcommand{\CommentTok}[1]{\textit{#1}}
-\newcommand{\DocumentationTok}[1]{\textit{#1}}
-\newcommand{\AnnotationTok}[1]{\textit{#1}}
-\newcommand{\CommentVarTok}[1]{\textit{#1}}
-\newcommand{\OtherTok}[1]{#1}
-\newcommand{\FunctionTok}[1]{#1}
-\newcommand{\VariableTok}[1]{#1}
-\newcommand{\ControlFlowTok}[1]{\textbf{#1}}
-\newcommand{\OperatorTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\PreprocessorTok}[1]{\textbf{#1}}
-\newcommand{\AttributeTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textit{#1}}
-\newcommand{\WarningTok}[1]{\textit{#1}}
-\newcommand{\AlertTok}[1]{\textbf{#1}}
-\newcommand{\ErrorTok}[1]{\textbf{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
 \newcommand{\NormalTok}[1]{#1}
 \IfFileExists{parskip.sty}{%
 \usepackage{parskip}
@@ -256,60 +256,6 @@ based on its current status.
 \KeywordTok{var}\NormalTok{ toggleSound }\OperatorTok{=} \KeywordTok{function}\NormalTok{ () }\OperatorTok{\{}
     \ControlFlowTok{if}\NormalTok{  (}\OperatorTok{!}\NormalTok{is_sound_on)   }\OperatorTok{\{}\ControlFlowTok{return} \AttributeTok{startSound}\NormalTok{()}\OperatorTok{;\}}
     \ControlFlowTok{if}\NormalTok{  (is_sound_on)    }\OperatorTok{\{}\ControlFlowTok{return} \AttributeTok{endSound}\NormalTok{()}\OperatorTok{;\}}
-\OperatorTok{\};}
-\end{Highlighting}
-\end{Shaded}
-
-\subsection{Changing the Interface}\label{changing-the-interface}
-
-\textbf{updateInterface()} will call of the text-altering functions that
-affect what is displayed on the screen. Globalized variables are
-converted into strings, and then into HTML.
-
-\textbf{Note:} Functions outside of the interface call upon this one. It
-connects the actual sound events to the interface. Everything else, and
-how the interface works, is defined further in this section.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{var}\NormalTok{ updateInterface }\OperatorTok{=} \KeywordTok{function}\NormalTok{ () }\OperatorTok{\{}
-    \AttributeTok{changeSoundStatus}\NormalTok{(is_sound_on)}\OperatorTok{;}
-    \AttributeTok{changeTextWaveform}\NormalTok{(is_sound_on}\OperatorTok{,} \VariableTok{osc}\NormalTok{.}\AttributeTok{type}\NormalTok{)}\OperatorTok{;}
-    \AttributeTok{changeTextFrequency}\NormalTok{(is_sound_on}\OperatorTok{,} \VariableTok{osc}\NormalTok{.}\VariableTok{frequency}\NormalTok{.}\AttributeTok{value}\NormalTok{)}\OperatorTok{;}
-\OperatorTok{\};}
-\end{Highlighting}
-\end{Shaded}
-
-Map TRUE and FALSE boolean values into strings
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{var}\NormalTok{ boolHighL }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status) }\OperatorTok{\{}
-    \ControlFlowTok{if}\NormalTok{ (status) }\OperatorTok{\{}\ControlFlowTok{return} \StringTok{'Highlight'}\OperatorTok{;\}} 
-    \ControlFlowTok{else}        \OperatorTok{\{}\ControlFlowTok{return} \StringTok{'NoHighlight'}\OperatorTok{;\}}
-\OperatorTok{\};}
-\end{Highlighting}
-\end{Shaded}
-
-These functions interact with the interface (which is the browser).
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{var}\NormalTok{ changeSoundStatus }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status) }\OperatorTok{\{}
-    \KeywordTok{var}\NormalTok{ span }\OperatorTok{=} \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'sound_status'}\NormalTok{)}\OperatorTok{;}
-    \VariableTok{span}\NormalTok{.}\AttributeTok{innerHTML} \OperatorTok{=} \VariableTok{status}\NormalTok{.}\AttributeTok{toString}\NormalTok{()}\OperatorTok{;}
-    \VariableTok{span}\NormalTok{.}\AttributeTok{className} \OperatorTok{=} \VariableTok{status}\NormalTok{.}\AttributeTok{toString}\NormalTok{()}\OperatorTok{;}
-\OperatorTok{\};}
-\KeywordTok{var}\NormalTok{ changeTextWaveform }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status}\OperatorTok{,}\NormalTok{ waveform) }\OperatorTok{\{}
-    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'waveform_type'}\NormalTok{).}\AttributeTok{innerHTML} \OperatorTok{=}\NormalTok{ waveform}\OperatorTok{;}
-    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'waveform_type'}\NormalTok{).}\AttributeTok{className} \OperatorTok{=} \AttributeTok{boolHighL}\NormalTok{(status)}\OperatorTok{;}
-\OperatorTok{\};}
-\KeywordTok{var}\NormalTok{ changeTextFrequency }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status}\OperatorTok{,}\NormalTok{ frequency) }\OperatorTok{\{}
-    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'span_frequency'}\NormalTok{).}\AttributeTok{innerHTML} \OperatorTok{=} \VariableTok{frequency}\NormalTok{.}\AttributeTok{toString}\NormalTok{()}\OperatorTok{;}
-    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'span_frequency'}\NormalTok{).}\AttributeTok{className} \OperatorTok{=} \AttributeTok{boolHighL}\NormalTok{(status)}\OperatorTok{;} 
-\OperatorTok{\};}
-\KeywordTok{var}\NormalTok{ humanHearingCheck }\OperatorTok{=} \KeywordTok{function}\NormalTok{(frequency) }\OperatorTok{\{}
-    \ControlFlowTok{return}\OperatorTok{;}
 \OperatorTok{\};}
 \end{Highlighting}
 \end{Shaded}

@@ -126,52 +126,5 @@ var toggleSound = function () {
     if  (!is_sound_on)   {return startSound();}
     if  (is_sound_on)    {return endSound();}
 };
-~~~
 
-Changing the Interface
---------------------------------------------------------------------------
-
-
-
-**updateInterface()** will call of the text-altering functions that affect what is displayed on the screen.  Globalized variables are converted into strings, and then into HTML.
-
-
-**Note:** Functions outside of the interface call upon this one.  It connects the actual sound events to the interface.  Everything else, and how the interface works, is defined further in this section.
-
-~~~ javascript 
-var updateInterface = function () {
-    changeSoundStatus(is_sound_on);
-    changeTextWaveform(is_sound_on, osc.type);
-    changeTextFrequency(is_sound_on, osc.frequency.value);
-};
-~~~
-
-Map TRUE and FALSE boolean values into strings
-
-~~~ javascript 
-var boolHighL = function (status) {
-    if (status) {return 'Highlight';} 
-    else        {return 'NoHighlight';}
-};
-~~~
-
-These functions interact with the interface (which is the browser).
-
-~~~ javascript 
-var changeSoundStatus = function (status) {
-    var span = document.getElementById('sound_status');
-    span.innerHTML = status.toString();
-    span.className = status.toString();
-};
-var changeTextWaveform = function (status, waveform) {
-    document.getElementById('waveform_type').innerHTML = waveform;
-    document.getElementById('waveform_type').className = boolHighL(status);
-};
-var changeTextFrequency = function (status, frequency) {
-    document.getElementById('span_frequency').innerHTML = frequency.toString();
-    document.getElementById('span_frequency').className = boolHighL(status); 
-};
-var humanHearingCheck = function(frequency) {
-    return;
-};
 ~~~

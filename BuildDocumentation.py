@@ -130,7 +130,7 @@ for name in INPUT_FILE_LIST:
         "-S", 
         "-o", 
         "docs/tex/" + name + ".tex", 
-        "--highlight-style=monochrome",
+        # "--highlight-style=monochrome",
         "--template=docs/tex/templates/templateDraft.tex"
     ])
 
