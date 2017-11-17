@@ -29,6 +29,44 @@
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textbf{#1}}
+\newcommand{\DataTypeTok}[1]{\underline{#1}}
+\newcommand{\DecValTok}[1]{#1}
+\newcommand{\BaseNTok}[1]{#1}
+\newcommand{\FloatTok}[1]{#1}
+\newcommand{\ConstantTok}[1]{#1}
+\newcommand{\CharTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{#1}
+\newcommand{\StringTok}[1]{#1}
+\newcommand{\VerbatimStringTok}[1]{#1}
+\newcommand{\SpecialStringTok}[1]{#1}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textit{#1}}
+\newcommand{\DocumentationTok}[1]{\textit{#1}}
+\newcommand{\AnnotationTok}[1]{\textit{#1}}
+\newcommand{\CommentVarTok}[1]{\textit{#1}}
+\newcommand{\OtherTok}[1]{#1}
+\newcommand{\FunctionTok}[1]{#1}
+\newcommand{\VariableTok}[1]{#1}
+\newcommand{\ControlFlowTok}[1]{\textbf{#1}}
+\newcommand{\OperatorTok}[1]{#1}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textbf{#1}}
+\newcommand{\AttributeTok}[1]{#1}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textit{#1}}
+\newcommand{\WarningTok}[1]{\textit{#1}}
+\newcommand{\AlertTok}[1]{\textbf{#1}}
+\newcommand{\ErrorTok}[1]{\textbf{#1}}
+\newcommand{\NormalTok}[1]{#1}
 \IfFileExists{parskip.sty}{%
 \usepackage{parskip}
 }{% else
@@ -57,6 +95,7 @@
 
 \date{}
 
+
 \begin{document}
 
 
@@ -70,6 +109,12 @@ be stored as an encoded Array. In the context of the \emph{Evolutionary
 Sound} project, these equations will be used to affect sound. The stored
 Array will be saved in the ``DNA'', and will be decoded when the sounds
 are created.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ hello }\OperatorTok{=} \StringTok{'there'}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
 
 \subsection{Encodings}\label{encodings}
 

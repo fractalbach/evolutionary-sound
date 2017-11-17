@@ -1,6 +1,8 @@
-
-
 # Javascript to MarkDown
+
+print ( '='*70 + '\n' + '   Documentation Makeshifter!\n' + '='*70 )
+print ( '\n Now Building Markdown Files... \n')
+print ( '-' * 70)
 
 
 BASE_URL = 'https://fractalbach.github.io/evolutionary-sound/docs/'
@@ -103,9 +105,13 @@ def switchSequence(line):
 # Calls Functions to Build Individual Documents.
 
 for inputFile_name in INPUT_FILE_LIST:
+    print ( 'Building ' + inputFile_name + '.md ...\n')
     buildDocument(inputFile_name)
 
 
+print ('=' * 70 +'\n')
+print ( 'Now Building TEX and PDF Files...')
+print ('=' * 70 +'\n')
 
 # Building PDF Documents from the pages using pandoc and pdflatex
 
@@ -113,20 +119,34 @@ for inputFile_name in INPUT_FILE_LIST:
 from subprocess import call
 
 for name in INPUT_FILE_LIST:
+    print ('\n' + '-' * 70 +'\n')
+    print ('Now Building ' + name + '.tex and .pdf ...')
+    print ('-' * 70 +'\n')
+
     call([
         "pandoc", 
         "docs/" + name + ".md",
         "-s", 
         "-S", 
         "-o", 
-        "docs/pages/" + name + ".tex", 
-        "--template=docs/templateDraft.tex"
+        "docs/tex/" + name + ".tex", 
+        "--highlight-style=monochrome",
+        "--template=docs/tex/templates/templateDraft.tex"
     ])
+
     # Create .pdf file using pdflatex
     call([
         "pdflatex", 
-        "docs/pages/" + name + ".tex", 
+        "docs/tex/" + name + ".tex", 
         "-output-directory=docs/pdf", 
-        "-aux-directory=docs/temp"
+        "-aux-directory=docs/tex/temp"
     ])
  
+
+
+print ('=' * 70 +'\n')
+print ( 'Documentation Build Complete !!')
+print ('=' * 70 +'\n')
+
+input("\nPress Enter to Exit...")
+

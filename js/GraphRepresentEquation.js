@@ -9,7 +9,7 @@
 
 // Tree Graphs can be used to present equations.  In turn, these graphs can be stored as an encoded Array.  In the context of the *Evolutionary Sound* project, these equations will be used to affect sound.  The stored Array will be saved in the "DNA", and will be decoded when the sounds are created.
 
-
+var hello = 'there';
 
 // Encodings
 // --------------------------------------------------------------------------
