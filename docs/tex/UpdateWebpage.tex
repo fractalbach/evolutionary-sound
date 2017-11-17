@@ -1,0 +1,201 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+\usepackage{fullpage}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\date{}
+
+
+\begin{document}
+
+
+\section{Updating the Webpage}\label{updating-the-webpage}
+
+Updating the webpage is built on a layer all of the functionality of the
+program. If this javascript file were not included, you could
+theoretically use the entire program with the command line. However, you
+must have the functionality in order to use this javascript.
+
+Several Types of Events are handled in this file:
+
+\begin{itemize}
+\tightlist
+\item
+  Functions that can be used by buttons and other interactive things.
+\item
+  changing actual HTML and Text on the webpage.
+\item
+  changing attributes to various DOM elements.
+\item
+  drawing onto a canvas.
+\end{itemize}
+
+\subsection{Updating Interfaces}\label{updating-interfaces}
+
+Currently, \textbf{updateInterface()} is the only function here. This
+clumps together the various individual components that are usually
+updated together. Button clicks will most probably call this function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ updateInterface }\OperatorTok{=} \KeywordTok{function}\NormalTok{ () }\OperatorTok{\{}
+    \AttributeTok{changeSoundStatus}\NormalTok{(is_sound_on)}\OperatorTok{;}
+    \AttributeTok{changeTextWaveform}\NormalTok{(is_sound_on}\OperatorTok{,} \VariableTok{osc}\NormalTok{.}\AttributeTok{type}\NormalTok{)}\OperatorTok{;}
+    \AttributeTok{changeTextFrequency}\NormalTok{(is_sound_on}\OperatorTok{,} \VariableTok{osc}\NormalTok{.}\VariableTok{frequency}\NormalTok{.}\AttributeTok{value}\NormalTok{)}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Changing Text}\label{changing-text}
+
+Here is where specific elements within the HTML document are targeted
+and changed. The functions here are very dependent on the structure of
+the HTML and the unique IDs they have been given.
+
+\textbf{changeSoundStatus(boolean)} tells you if the sound is ON or OFF.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ changeSoundStatus }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status) }\OperatorTok{\{}
+    \KeywordTok{var}\NormalTok{ span }\OperatorTok{=} \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'sound_status'}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{span}\NormalTok{.}\AttributeTok{innerHTML} \OperatorTok{=} \VariableTok{status}\NormalTok{.}\AttributeTok{toString}\NormalTok{()}\OperatorTok{;}
+    \VariableTok{span}\NormalTok{.}\AttributeTok{className} \OperatorTok{=} \VariableTok{status}\NormalTok{.}\AttributeTok{toString}\NormalTok{()}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{changeTextWaveform(boolean, string)} displays the type of
+waveform being used by given oscillator. The string will most likely be
+derived from oscillator.type
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ changeTextWaveform }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status}\OperatorTok{,}\NormalTok{ waveform) }\OperatorTok{\{}
+    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'waveform_type'}\NormalTok{).}\AttributeTok{innerHTML} \OperatorTok{=}\NormalTok{ waveform}\OperatorTok{;}
+    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'waveform_type'}\NormalTok{).}\AttributeTok{className} \OperatorTok{=} \AttributeTok{boolHighL}\NormalTok{(status)}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{changeTextFrequency(boolean, integer)} displays the oscillator's
+frequency. However, this function would accept and display any integer
+given.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ changeTextFrequency }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status}\OperatorTok{,}\NormalTok{ frequency) }\OperatorTok{\{}
+    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'span_frequency'}\NormalTok{).}\AttributeTok{innerHTML} \OperatorTok{=} \VariableTok{frequency}\NormalTok{.}\AttributeTok{toString}\NormalTok{()}\OperatorTok{;}
+    \VariableTok{document}\NormalTok{.}\AttributeTok{getElementById}\NormalTok{(}\StringTok{'span_frequency'}\NormalTok{).}\AttributeTok{className} \OperatorTok{=} \AttributeTok{boolHighL}\NormalTok{(status)}\OperatorTok{;} 
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Supporting Functions}\label{supporting-functions}
+
+Supporting Functions map values that are saved in objects, and converts
+them into a printable form (like a string).
+
+For example, this function takes a boolean and converts it into
+``highlight'' or ``no highlight''. These are the names of classes in the
+CSS that style boxes different colors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{ boolHighL }\OperatorTok{=} \KeywordTok{function}\NormalTok{ (status) }\OperatorTok{\{}
+    \ControlFlowTok{if}\NormalTok{ (status) }\OperatorTok{\{}\ControlFlowTok{return} \StringTok{'Highlight'}\OperatorTok{;\}} 
+    \ControlFlowTok{else}        \OperatorTok{\{}\ControlFlowTok{return} \StringTok{'NoHighlight'}\OperatorTok{;\}}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\end{document}

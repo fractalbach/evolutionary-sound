@@ -9,7 +9,8 @@ BASE_URL = 'https://fractalbach.github.io/evolutionary-sound/docs/'
 
 INPUT_FILE_LIST = [
     'soundCheck',
-    'GraphRepresentEquation'
+    'GraphRepresentEquation',
+    'UpdateWebpage'
 ]
 
 

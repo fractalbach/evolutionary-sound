@@ -8,3 +8,4 @@ Documentation HTML Page | PDF
 -|- 
 [soundCheck](https://fractalbach.github.io/evolutionary-sound/docs/soundCheck.html) |  [PDF](https://fractalbach.github.io/evolutionary-sound/docs/pdf/soundCheck.pdf)
 [GraphRepresentEquation](https://fractalbach.github.io/evolutionary-sound/docs/GraphRepresentEquation.html) |  [PDF](https://fractalbach.github.io/evolutionary-sound/docs/pdf/GraphRepresentEquation.pdf)
+[UpdateWebpage](https://fractalbach.github.io/evolutionary-sound/docs/UpdateWebpage.html) |  [PDF](https://fractalbach.github.io/evolutionary-sound/docs/pdf/UpdateWebpage.pdf)
