@@ -1,2 +1,3 @@
 theme: jekyll-theme-cayman
-math_engine: mathjax
+kramdown:
+  math_engine: mathjax
